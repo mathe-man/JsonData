@@ -66,6 +66,7 @@ public static class JsonData
 		    SafeKey(path);
 		    SavePath(path);
 	    }
+	    _objectToSave.Clear();
     }
 }
 
