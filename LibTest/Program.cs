@@ -22,7 +22,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        JsonManager jm = new JsonManager();
+        JsonSave jm = new JsonSave();
         var Bea = new Person("Bea", "123456");
         
         Bea.favorites = new Dictionary<string, List<string>>()

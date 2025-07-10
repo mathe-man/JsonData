@@ -5,16 +5,24 @@ using Newtonsoft.Json.Serialization;
 namespace JsonData;
 
 
-
-public class JsonManager
+public class PrivateMembersCResolver : DefaultContractResolver
 {
-    private JsonSerializerSettings _settings = new JsonSerializerSettings
+	protected override List<MemberInfo> GetSerializableMembers(Type objectType)
+	{
+		// Récupère tous les champs et propriétés publics/privés d'instance
+		var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+		return objectType.GetMembers(flags)
+			.Where(m => m.MemberType == MemberTypes.Field || m.MemberType == MemberTypes.Property)
+			.ToList();
+	}
+}
+
+public class JsonSave
+{
+    private JsonSerializerSettings _settings = new()
     {
         Formatting = Formatting.Indented,
-        ContractResolver = new DefaultContractResolver()
-        {
-            DefaultMembersSearchFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
-        }
+        ContractResolver = new PrivateMembersCResolver()
     };
 
     public string DefaultFileExtension { get; set; } = ".json";
