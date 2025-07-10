@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonData", "JsonData\JsonData.csproj", "{91C0803D-13DA-46E0-840F-E953C71ADECD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTest", "LibTest\LibTest.csproj", "{688D0AB8-EBD8-4F8A-821C-899E7373DA8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91C0803D-13DA-46E0-840F-E953C71ADECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C0803D-13DA-46E0-840F-E953C71ADECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C0803D-13DA-46E0-840F-E953C71ADECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C0803D-13DA-46E0-840F-E953C71ADECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{688D0AB8-EBD8-4F8A-821C-899E7373DA8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{688D0AB8-EBD8-4F8A-821C-899E7373DA8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{688D0AB8-EBD8-4F8A-821C-899E7373DA8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{688D0AB8-EBD8-4F8A-821C-899E7373DA8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
