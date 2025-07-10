@@ -38,9 +38,9 @@ class Program
 
         Bea.parent = Fred;
         
-        JsonData.JsonData.AddObjectToSave(Bea, "../save.dat");
-        JsonData.JsonData.AddObjectToSave(Fred, "../save.dat");
-        JsonData.JsonData.Save();
+        JsonData.JsonSave.AddObjectToSave(Bea, "../save.dat");
+        JsonData.JsonSave.AddObjectToSave(Fred, "../save.dat");
+        JsonData.JsonSave.Save();
         
         Person? a = JsonLoad.Load<Person>("../save.dat", 0);
     }
