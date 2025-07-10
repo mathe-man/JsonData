@@ -5,6 +5,7 @@ class Person
 {
     public string name          { get; set; }
     private string password;
+    public static bool IsHuman = true;
     public Dictionary<string, List<string>> favorites { get; set; }
     public Person? parent   { get; set; }
 
@@ -33,8 +34,8 @@ class Program
 
         Bea.parent = Fred;
         
-        jm.AddObjectToSave(Bea, "../Person.dat");
-        jm.AddObjectToSave(Fred, "../Person.dat");
+        jm.AddObjectToSave(Bea, "../save.dat");
+        jm.AddObjectToSave(Fred, "../save.dat");
         jm.Save();
     }
 }

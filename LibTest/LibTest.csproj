@@ -11,4 +11,8 @@
       <ProjectReference Include="..\JsonData\JsonData.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Content Include="bin\Debug\save.dat" />
+    </ItemGroup>
+
 </Project>
