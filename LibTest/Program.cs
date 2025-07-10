@@ -15,6 +15,11 @@ class Person
 	    this.password = password;
 	    this.parent = parent;
     }
+
+    public void Speak()
+    {
+	    Console.WriteLine($"I am {name} and i like {favorites.Count} things!");
+    }
 }
 
 
@@ -22,7 +27,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        JsonSave jm = new JsonSave();
         var Bea = new Person("Bea", "123456");
         
         Bea.favorites = new Dictionary<string, List<string>>()
@@ -34,8 +38,10 @@ class Program
 
         Bea.parent = Fred;
         
-        jm.AddObjectToSave(Bea, "../save.dat");
-        jm.AddObjectToSave(Fred, "../save.dat");
-        jm.Save();
+        JsonData.JsonData.AddObjectToSave(Bea, "../save.dat");
+        JsonData.JsonData.AddObjectToSave(Fred, "../save.dat");
+        JsonData.JsonData.Save();
+        
+        Person? a = JsonLoad.Load<Person>("../save.dat", 0);
     }
 }

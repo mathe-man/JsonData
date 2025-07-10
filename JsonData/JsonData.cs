@@ -17,31 +17,31 @@ public class PrivateMembersCResolver : DefaultContractResolver
 	}
 }
 
-public class JsonSave
+public static class JsonData
 {
-    private JsonSerializerSettings _settings = new()
+    private static JsonSerializerSettings _settings = new()
     {
         Formatting = Formatting.Indented,
         ContractResolver = new PrivateMembersCResolver()
     };
 
-    public string DefaultFileExtension { get; set; } = ".json";
+    public static string DefaultFileExtension { get; set; } = ".json";
 
-    private Dictionary<string, List<object>> _objectToSave = new Dictionary<string, List<object>>();
+    private static Dictionary<string, List<object>> _objectToSave = new Dictionary<string, List<object>>();
 
-    private void SafeKey(string key)
+    private static void SafeKey(string key)
     {
 	    if (!_objectToSave.ContainsKey(key))
 		    _objectToSave.Add(key, new List<object>());
     }
     
-    public void AddObjectToSave(object obj, string path)
+    public static void AddObjectToSave(object obj, string path)
     {
 	    SafeKey(path);
         _objectToSave[path].Add(obj);
     }
 
-    private void SavePath(string path)
+    private static void SavePath(string path)
     {
 	    SafeKey(path);
 	    string json = "";
@@ -55,7 +55,7 @@ public class JsonSave
 	    File.WriteAllText(path, json);
 	    Console.WriteLine($"Saved the {path} file");
     }
-    public void Save(string? path = null)
+    public static void Save(string? path = null)
     {
 	    if (path == null)
 		    foreach (var obj in _objectToSave)
@@ -67,4 +67,38 @@ public class JsonSave
 		    SavePath(path);
 	    }
     }
+}
+
+
+public static class JsonLoad
+{
+	private static JsonSerializerSettings _settings = new()
+	{
+		Formatting = Formatting.Indented,
+		ContractResolver = new PrivateMembersCResolver()
+	};
+	
+	public static List<T>? Load<T>(string path)
+	{
+		if (!File.Exists(path))
+			return default;
+		
+		string json = File.ReadAllText(path);
+		return JsonConvert.DeserializeObject<List<T>>(json, _settings);
+	}
+
+	public static T? Load<T>(string path, int index)
+	{
+		if (!File.Exists(path))
+			return default;
+		
+		string json = File.ReadAllText(path);
+		List<T>? list = JsonConvert.DeserializeObject<List<T>>(json, _settings);
+
+;
+		if (list == null || index >= list.Count)
+			return default;
+		
+		return list[index];
+	}
 }
